@@ -13,7 +13,7 @@ function rejeitarEspacos(htmlInputElement) {
     });
 }
 
-/// Precisa do math-utils.js
+/// Requer math-utils.js
 function scrollSuave(posicaoDestino) {
     const interval = setInterval(() => {
         const distancia = Math.abs(document.body.scrollTop - posicaoDestino);
@@ -27,6 +27,7 @@ function scrollSuave(posicaoDestino) {
     }, 1000 / 60)
 }
 
+/// Requer math-utils.js
 let intervalosBarraProgresso = new Map();
 function animarBarraProgresso(posicaoDestino, idHtmlElementBarraProgresso) {
     if (intervalosBarraProgresso[idHtmlElementBarraProgresso]) {
