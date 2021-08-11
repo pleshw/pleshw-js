@@ -1,6 +1,6 @@
 
 function lerp(inicio, fim, qtd) {
-    return (1 - qtd) * inicio + qtd * fim
+    return (1 - qtd) * inicio + qtd * fim;
 }
 
 function inverseLerp(a, b, valor) {
@@ -8,8 +8,5 @@ function inverseLerp(a, b, valor) {
 }
 
 function remap(entradaMin, entradaMax, saidaMin, saidaMax, valor) {
-    return inverseLerp(
-        entradaMin,
-        entradaMax,
-        lerp(saidaMin, saidaMax, t));
+    return lerp(saidaMin, saidaMax, inverseLerp(entradaMin, entradaMax, valor));
 }
