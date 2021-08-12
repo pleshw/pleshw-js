@@ -29,17 +29,16 @@ function scrollSuave(posicaoDestino) {
 
 /// Requer math-utils.js
 let intervalosBarraProgresso = new Map();
-function animarBarraProgresso(posicaoDestino, idHtmlElementBarraProgresso) {
+function animacaoBarraProgresso(posicaoDestino, idHtmlElementBarraProgresso, fpsAnimacao = 120) {
     if (intervalosBarraProgresso[idHtmlElementBarraProgresso]) {
         clearInterval(intervalosBarraProgresso[idHtmlElementBarraProgresso]);
     }
-
+    
     intervalosBarraProgresso[idHtmlElementBarraProgresso] = setInterval(() => {
-        const posicaoAnterior = parseFloat($('#CadastroAbaDivForcaSenha').get(0).style.width.replace('%', ''));
-      
+        const posicaoAnterior = parseFloat($('#' + idHtmlElementBarraProgresso).get(0).style.width.replace('%', ''));
         const distancia = Math.abs(posicaoAnterior - posicaoDestino);
         if (distancia > 0.1) {
-            /// Pegando a posição que a barrinha deve ficar no proximo frame pra animação ficar suavizada
+            /// Pegando a posição em que o progresso deve estar no proximo frame
             let porcentagemFrameAtual = lerp(posicaoAnterior, posicaoDestino, 0.05);
 
             /// Escolhendo a cor com base na porcentagem
@@ -62,5 +61,5 @@ function animarBarraProgresso(posicaoDestino, idHtmlElementBarraProgresso) {
         } else {
             clearInterval(intervalosBarraProgresso[idHtmlElementBarraProgresso]);
         }
-    }, 1000 / 60)
+    }, 1000 / fpsAnimacao)
 }
