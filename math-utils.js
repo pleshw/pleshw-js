@@ -10,3 +10,7 @@ function inverseLerp(a, b, valor) {
 function remap(entradaMin, entradaMax, saidaMin, saidaMax, valor) {
     return lerp(saidaMin, saidaMax, inverseLerp(entradaMin, entradaMax, valor));
 }
+
+function clamp (num, min = 0, max = 100){
+    return  Math.min(Math.max(num, min), max) || min 
+}
